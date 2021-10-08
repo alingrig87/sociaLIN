@@ -5,6 +5,9 @@ const connectToDB = require('./config/mongoConnection');
 // Connect to Mongo DB
 connectToDB();
 
+// Init Middleware
+app.use(express.json({ extended: false }));
+
 app.get('/', (request, response) => response.send('Test API ...'));
 
 // Routes
