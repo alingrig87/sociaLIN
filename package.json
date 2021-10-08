@@ -2,7 +2,7 @@
 	"name": "socialin",
 	"version": "1.0.0",
 	"description": "Social Media app build with node.js and React",
-	"main": "index.js",
+	"main": "server.js",
 	"scripts": {
 		"start": "node server",
 		"dev-start": "nodemon server"
