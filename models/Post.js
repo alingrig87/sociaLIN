@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const PostsSchema = mongoose.Schema({
+const PostSchema = mongoose.Schema({
 	user: {
 		// the user will be able to delete his own posts
 		type: mongoose.Schema.Types.ObjectId,
@@ -16,6 +16,10 @@ const PostsSchema = mongoose.Schema({
 	},
 	avatar: {
 		type: String,
+	},
+	date: {
+		type: Date,
+		default: Date.now,
 	},
 	likes: [
 		{
