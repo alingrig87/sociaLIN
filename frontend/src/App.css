@@ -100,8 +100,17 @@ body {
 	height: 100%;
 }
 
-/* Buttons */
+/* Container */
+.container {
+	max-width: 1100px;
+	margin: auto;
+	overflow: hidden;
+	padding: 0 2rem;
+	margin-top: 6rem;
+	margin-bottom: 3rem;
+}
 
+/* Buttons */
 .btn {
 	display: inline-block;
 	background: var(--light-color);

@@ -1,30 +1,31 @@
 import React from 'react';
 import { AiFillHome, AiOutlineLogin } from 'react-icons/ai';
 import { MdOutlineAccountBox } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 	return (
 		<div>
 			<nav className="navbar bg-dark">
 				<h1>
-					<a href="index.html">social IN</a>
+					<Link to="/index">social IN</Link>
 				</h1>
 				<ul>
 					<li>
-						<a href="home.html">
+						<Link to="/">
 							<AiFillHome /> Home
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href="login.html">
+						<Link to="/login">
 							<AiOutlineLogin /> Log in
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href="register.html">
+						<Link to="/register">
 							<MdOutlineAccountBox />
 							Sign up
-						</a>
+						</Link>
 					</li>
 				</ul>
 			</nav>
