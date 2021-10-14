@@ -10,12 +10,10 @@ const App = () => (
 		<div className="App">
 			<Navbar />
 			<Route exact path="/" component={Landing} />
-			<div className="container">
-				<Switch>
-					<Route exact path="/register" component={Register} />
-					<Route exact path="/login" component={Login} />
-				</Switch>
-			</div>
+			<Switch>
+				<Route exact path="/register" component={Register} />
+				<Route exact path="/login" component={Login} />
+			</Switch>
 		</div>
 	</Router>
 );

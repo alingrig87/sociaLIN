@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
 	return (
 		<div>
-			<nav className="navbar bg-dark">
+			<nav className="navbar bg-primary">
 				<h1>
-					<Link to="/index">social IN</Link>
+					<Link to="/index">SociaL in</Link>
 				</h1>
 				<ul>
 					<li>

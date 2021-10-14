@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 const Landing = () => {
 	return (
-		<div class="landing">
-			<div class="dark-overlay">
-				<div class="landing-inner">
-					<div class="buttons">
-						<Link to="/register" class="btn btn-dark">
+		<div className="landing">
+			<div className="dark-overlay">
+				<div className="landing-inner">
+					<div className="buttons">
+						<Link to="/register" className="btn btn-primary">
 							Sign Up
 						</Link>
-						<Link to="/login" class="btn btn-light">
+						<Link to="/login" className="btn btn-primary">
 							Login
 						</Link>
 					</div>
