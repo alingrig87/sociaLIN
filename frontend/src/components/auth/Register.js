@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -7,7 +7,7 @@ import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-const Register = ({ setAlert, register }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
@@ -16,7 +16,7 @@ const Register = ({ setAlert, register }) => {
 	});
 
 	const { name, email, password, confirmationPassword } = formData;
-	const submitHandler = async (e) => {
+	const registerHandler = async (e) => {
 		e.preventDefault();
 		if (password !== confirmationPassword) {
 			setAlert('Passwords do not match', 'danger', 3000);
@@ -25,13 +25,18 @@ const Register = ({ setAlert, register }) => {
 		}
 	};
 
+	// redirect when user is logged in -- react router Redirect to
+	if (isAuthenticated) {
+		<Redirect to="/home" />;
+	}
+
 	return (
 		<div className="container">
 			<h1 className="large text-primary">Sign Up</h1>
 			<p className="lead">
 				<FaUserAlt /> Create your account
 			</p>
-			<form className="form" onSubmit={(e) => submitHandler(e)}>
+			<form className="form" onSubmit={(e) => registerHandler(e)}>
 				<div className="form-group">
 					<input
 						type="text"
@@ -96,6 +101,11 @@ const Register = ({ setAlert, register }) => {
 Register.propTypes = {
 	setAlert: PropTypes.func.isRequired,
 	register: PropTypes.func.isRequired,
+	isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { setAlert, register })(Register);
+const mapStateToProps = (state) => ({
+	isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);

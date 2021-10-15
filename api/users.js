@@ -22,7 +22,6 @@ router.post(
 		).isLength({ min: 6 }),
 	],
 	async (request, response) => {
-		console.log(request.body);
 		const errors = validationResult(request);
 		if (!errors.isEmpty()) {
 			return response.status(400).json({ errors: errors.array() });
