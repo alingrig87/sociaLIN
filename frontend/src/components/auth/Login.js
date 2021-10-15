@@ -50,7 +50,7 @@ const Login = () => {
 							setFormData({ ...formData, email: e.target.value })
 						}
 						required
-						autocomplete="on"
+						autoComplete="on"
 					/>
 				</div>
 				<div className="form-group">
@@ -63,6 +63,7 @@ const Login = () => {
 							setFormData({ ...formData, password: e.target.value })
 						}
 						minLength="6"
+						autoComplete="on"
 					/>
 				</div>
 				<input type="submit" className="btn btn-primary" value="Login" />

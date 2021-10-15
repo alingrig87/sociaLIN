@@ -19,7 +19,7 @@ const Register = (props) => {
 		e.preventDefault();
 		if (password !== confirmationPassword) {
 			console.log('Passwords do not match');
-			props.setAlert('Passwords do not match', 'danger');
+			props.setAlert('Passwords do not match', 'danger', 3000);
 		} else {
 			const user = {
 				name,
@@ -85,7 +85,7 @@ const Register = (props) => {
 							setFormData({ ...formData, password: e.target.value })
 						}
 						minLength="6"
-						autocomplete="on"
+						autoComplete="on"
 					/>
 				</div>
 				<div className="form-group">
@@ -98,7 +98,7 @@ const Register = (props) => {
 							setFormData({ ...formData, confirmationPassword: e.target.value })
 						}
 						minLength="6"
-						autocomplete="on"
+						autoComplete="on"
 					/>
 				</div>
 				<input type="submit" className="btn btn-primary" value="Register" />
