@@ -4,9 +4,10 @@ import { FaUserAlt } from 'react-icons/fa';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-const Register = (props) => {
+const Register = ({ setAlert, register }) => {
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
@@ -18,27 +19,9 @@ const Register = (props) => {
 	const submitHandler = async (e) => {
 		e.preventDefault();
 		if (password !== confirmationPassword) {
-			console.log('Passwords do not match');
-			props.setAlert('Passwords do not match', 'danger', 3000);
+			setAlert('Passwords do not match', 'danger', 3000);
 		} else {
-			const user = {
-				name,
-				email,
-				password,
-			};
-			try {
-				const config = {
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				};
-				const body = JSON.stringify(user);
-
-				const response = await axios.post('/api/users', body, config);
-				console.log(response.data);
-			} catch (error) {
-				console.log(error.response.data);
-			}
+			register({ name, email, password });
 		}
 	};
 
@@ -56,7 +39,7 @@ const Register = (props) => {
 						name="name"
 						value={name}
 						onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-						required
+						// required
 					/>
 				</div>
 				<div className="form-group">
@@ -68,7 +51,7 @@ const Register = (props) => {
 						onChange={(e) =>
 							setFormData({ ...formData, email: e.target.value })
 						}
-						required
+						// required
 					/>
 					<small className="form-text">
 						This site uses Gravatar so if you want a profile image, use a
@@ -84,8 +67,8 @@ const Register = (props) => {
 						onChange={(e) =>
 							setFormData({ ...formData, password: e.target.value })
 						}
-						minLength="6"
-						autoComplete="on"
+						// minLength="6"
+						// autoComplete="on"
 					/>
 				</div>
 				<div className="form-group">
@@ -97,8 +80,8 @@ const Register = (props) => {
 						onChange={(e) =>
 							setFormData({ ...formData, confirmationPassword: e.target.value })
 						}
-						minLength="6"
-						autoComplete="on"
+						// minLength="6"
+						// autoComplete="on"
 					/>
 				</div>
 				<input type="submit" className="btn btn-primary" value="Register" />
@@ -112,5 +95,7 @@ const Register = (props) => {
 
 Register.propTypes = {
 	setAlert: PropTypes.func.isRequired,
+	register: PropTypes.func.isRequired,
 };
-export default connect(null, { setAlert })(Register);
+
+export default connect(null, { setAlert, register })(Register);
