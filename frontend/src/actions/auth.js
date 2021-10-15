@@ -9,6 +9,7 @@ import {
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
 	LOGOUT,
+	CLEAR_PROFILE,
 } from './constants';
 
 // register user
@@ -47,15 +48,13 @@ export const register =
 	};
 
 // user loaded
-export const userLoaded = () => async (dispatch) => {
-	console.log(localStorage.token);
+export const loadUser = () => async (dispatch) => {
 	if (localStorage.token) {
 		setAuthToken(localStorage.token);
 	}
 
 	try {
 		const response = await axios.get('/api/auth');
-		console.log('response ', response);
 		dispatch({
 			type: USER_LOADED,
 			payload: response.data,
@@ -83,11 +82,6 @@ export const login =
 				type: LOGIN_SUCCESS,
 				payload: response.data,
 			});
-
-			dispatch({
-				type: USER_LOADED,
-				payload: response.data,
-			});
 		} catch (error) {
 			const errors = error.response.data.errors;
 
@@ -104,5 +98,6 @@ export const login =
 
 // logout / clear user details
 export const logout = () => (dispatch) => {
+	dispatch({ type: CLEAR_PROFILE });
 	dispatch({ type: LOGOUT });
 };

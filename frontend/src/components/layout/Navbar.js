@@ -10,7 +10,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 	const vistorLinks = (
 		<ul>
 			<li>
-				<Link to="/Home">
+				<Link to="/home">
 					<AiFillHome /> Home
 				</Link>
 			</li>
@@ -31,7 +31,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 	const authLinks = (
 		<ul>
 			<li>
-				<Link to="/Home">
+				<Link to="/home">
 					<AiFillHome /> Home
 				</Link>
 			</li>
@@ -46,7 +46,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 	return (
 		<div>
 			<nav className="navbar bg-primary">
-				<h1>
+				<h1 className="logo">
 					<Link to="/">SociaL in</Link>
 				</h1>
 				{isAuthenticated ? authLinks : vistorLinks}

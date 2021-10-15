@@ -1,10 +1,13 @@
+/* Imported fonts */
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre&family=Roboto:wght@300;500&display=swap');
 /* Global Styles */
 :root {
-	--primary-color: #28a745;
-	--dark-color: #182216;
-	--light-color: #f4f4f4;
+	--primary-color: #3c8dad;
+	--dark-color: #121983;
+	--light-color: #ace4f5;
 	--danger-color: #e05966;
-	--success-color: #0b491a;
+	--success-color: #21ac21;
 }
 
 * {
@@ -14,7 +17,7 @@
 }
 
 body {
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-size: 1rem;
 	line-height: 1.6;
 	background-color: #fff;
@@ -59,7 +62,8 @@ body {
 }
 
 .navbar .logo {
-	margin-bottom: 20px;
+	font-family: 'Gemunu Libre', sans-serif;
+	font-size: 30px;
 }
 
 /* Landing Page */

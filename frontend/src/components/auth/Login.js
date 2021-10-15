@@ -25,7 +25,7 @@ const Login = ({ login, isAuthenticated }) => {
 		<div className="container">
 			<h1 className="large text-primary">Sign in</h1>
 			<p className="lead">
-				<FaUserAlt /> Sing Into your account
+				<FaUserAlt /> Sign into your account
 			</p>
 			<form className="form" onSubmit={(e) => submitHandler(e)}>
 				<div className="form-group">
@@ -65,7 +65,7 @@ const Login = ({ login, isAuthenticated }) => {
 
 Login.propTypes = {
 	login: PropTypes.func.isRequired,
-	isAuthentication: PropTypes.bool,
+	isAuthenticated: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({

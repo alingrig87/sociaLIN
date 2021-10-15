@@ -9,21 +9,23 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
 import Home from './components/home/Home';
+import CreateProfile from './components/profile/CreateProfile';
+import EditProfile from './components/profile/EditProfile';
 import PrivateRoute from './components/routing/PrivateRoute';
 // redux
 import { Provider } from 'react-redux';
 import store from '../src/store';
 import setAuthToken from './utils/setAuthToken';
-import { userLoaded } from './actions/auth';
-
-if (localStorage.token) {
-	setAuthToken(localStorage.token);
-}
+import { loadUser } from './actions/auth';
 
 const App = () => {
 	// put the second parameter [arr of states] to run only once when component did mount
 	useEffect(() => {
-		store.dispatch(userLoaded());
+		if (localStorage.token) {
+			setAuthToken(localStorage.token);
+		}
+
+		// store.dispatch(loadUser());
 	}, []);
 
 	return (
@@ -37,6 +39,12 @@ const App = () => {
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/login" component={Login} />
 						<PrivateRoute exact path="/home" component={Home} />
+						<PrivateRoute
+							exact
+							path="/create-profile"
+							component={CreateProfile}
+						/>
+						<PrivateRoute exact path="/edit-profile" component={EditProfile} />
 					</Switch>
 				</div>
 			</Router>

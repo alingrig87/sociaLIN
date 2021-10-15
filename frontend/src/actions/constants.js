@@ -22,3 +22,7 @@ export const LOGOUT = 'LOGOUT';
 // profiles
 export const GET_PROFILE = 'GET_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
+export const CLEAR_PROFILE = 'CLEAR_PROFILE';
+
+// account
+export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
