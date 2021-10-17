@@ -5,16 +5,19 @@ import Spinner from '../layout/Spinner';
 import Post from './Post';
 import { getPosts } from '../../actions/post';
 import { loadUser } from '../../actions/auth';
+import PostInput from './PostInput';
 
 const Posts = ({ loadUser, getPosts, post: { posts, loading } }) => {
 	useEffect(() => {
 		loadUser();
 		getPosts();
-	}, [getPosts]);
+		loadUser();
+	}, [getPosts, loadUser]);
 	return loading ? (
 		<Spinner />
 	) : (
 		<div className="container">
+			<PostInput />
 			<div className="posts">
 				{posts.map((post) => (
 					<Post key={post._id} post={post} />

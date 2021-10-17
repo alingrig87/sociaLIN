@@ -19,7 +19,7 @@ const Login = ({ login, isAuthenticated }) => {
 	};
 
 	return isAuthenticated ? (
-		<Redirect to="/home" />
+		<Redirect to="/posts" />
 	) : (
 		<div className="container">
 			<h1 className="large text-primary">Sign in</h1>

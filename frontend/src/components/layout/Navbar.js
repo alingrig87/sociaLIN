@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiFillHome, AiOutlineLogin, AiOutlineLogout } from 'react-icons/ai';
-import { MdOutlineAccountBox } from 'react-icons/md';
+import { MdOutlineAccountBox, MdOutlineAccountCircle } from 'react-icons/md';
 import { BiEditAlt } from 'react-icons/bi';
 import { FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 import Spinner from './Spinner';
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 	if (loading) {
 		return <Spinner />;
 	}
@@ -17,12 +17,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 		<ul>
 			<li>
 				<Link to="/users">
-					<FiSearch /> Find a user
-				</Link>
-			</li>
-			<li>
-				<Link to="/home">
-					<AiFillHome /> Home
+					<FiSearch /> Find new friends
 				</Link>
 			</li>
 			<li>
@@ -43,7 +38,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 		<ul>
 			<li>
 				<Link to="/users">
-					<FiSearch /> Find a user
+					<FiSearch /> Find new friends
 				</Link>
 			</li>
 			<li>
@@ -52,10 +47,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 				</Link>
 			</li>
 			<li>
-				<Link to="/home">
-					<AiFillHome /> Home
+				<Link to="/account">
+					<MdOutlineAccountCircle /> My account
 				</Link>
 			</li>
+			<li></li>
 			<li>
 				<Link to="/" onClick={() => logout()}>
 					<AiOutlineLogout /> Log out
@@ -70,6 +66,14 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 				<h1 className="logo">
 					<Link to="/">SociaL in</Link>
 				</h1>
+				{isAuthenticated ? (
+					<div className="loggedin-user">
+						<img className="round-img img-small" src={user && user.avatar} />
+						<p>{user && user.name}</p>
+					</div>
+				) : (
+					''
+				)}
 				{isAuthenticated ? authLinks : vistorLinks}
 			</nav>
 		</div>

@@ -123,6 +123,7 @@ body {
 	opacity: 0.9;
 	background: var(--light-color);
 	color: #333;
+	border-radius: 20px;
 }
 
 /* Buttons */
@@ -339,6 +340,10 @@ button {
 	border-radius: 50%;
 }
 
+.img-small {
+	width: 30px;
+}
+
 .profile {
 	display: flex;
 	justify-content: center;
@@ -354,10 +359,6 @@ button {
 }
 
 /* Posts Page */
-.post-form .post-form-header {
-	background: var(--primary-color);
-	padding: 0.5rem;
-}
 
 .post {
 	display: grid;
@@ -366,6 +367,14 @@ button {
 	align-items: center;
 	background: rgb(247, 243, 243);
 	border-radius: 20px;
+}
+
+.post-input {
+	background: rgb(247, 243, 243);
+}
+
+.post-input:focus {
+	border-style: none;
 }
 
 .post > div:first-child {
@@ -388,4 +397,9 @@ button {
 	color: #aaa;
 	font-size: 0.8rem;
 	margin-bottom: 0.5rem;
+}
+
+.loggedin-user {
+	display: flex;
+	gap: 10px;
 }

@@ -86,7 +86,6 @@ router.post(
 router.get('/', async (request, response) => {
 	try {
 		const profiles = await Profile.find().populate('user', ['name', 'avatar']);
-
 		response.json(profiles);
 	} catch (error) {
 		console.error(error.message);

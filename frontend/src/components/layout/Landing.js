@@ -6,7 +6,7 @@ import { Redirect } from 'react-router';
 
 const Landing = ({ isAuthenticated }) => {
 	if (isAuthenticated) {
-		return <Redirect to="/home" />;
+		return <Redirect to="/posts" />;
 	}
 	return (
 		<div className="landing">
