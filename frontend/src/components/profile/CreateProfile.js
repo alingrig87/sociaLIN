@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile } from '../../actions/profile';
-import { createStore } from 'redux';
 
 const CreateProfile = ({ createProfile, history }) => {
 	const [formData, setFormData] = useState({
@@ -34,11 +33,16 @@ const CreateProfile = ({ createProfile, history }) => {
 						placeholder="* Nickname"
 						name="nickname"
 						required
+						value={nickname}
 						onChange={(e) => changeHandler(e)}
 					/>
 				</div>
 				<div className="form-group">
-					<select name="gender" onChange={(e) => changeHandler(e)}>
+					<select
+						name="gender"
+						value={gender}
+						onChange={(e) => changeHandler(e)}
+					>
 						<option value="0">* Select Gender</option>
 						<option value="male">Male</option>
 						<option value="female">Female</option>
@@ -86,7 +90,5 @@ const CreateProfile = ({ createProfile, history }) => {
 CreateProfile.propTypes = {
 	createProfile: PropTypes.func.isRequired,
 };
-
-const mapStateToProps = (state) => {};
 
 export default connect(null, { createProfile })(withRouter(CreateProfile));

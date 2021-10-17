@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
-import axios from 'axios';
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';

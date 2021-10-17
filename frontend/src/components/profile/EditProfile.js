@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentUserProfile } from '../../actions/profile';
-import { createStore } from 'redux';
 
 const EditProfile = ({
 	profile: { profile, loading },
@@ -22,14 +21,16 @@ const EditProfile = ({
 	useEffect(() => {
 		getCurrentUserProfile();
 
-		setFormData({
-			nickname: loading || !profile.nickname ? '' : profile.nickname,
-			gender: loading || !profile.gender ? '' : profile.gender,
-			status: loading || !profile.status ? '' : profile.status,
-			phoneNumber: loading || !profile.phoneNumber ? '' : profile.phoneNumber,
-			city: loading || !profile.city ? '' : profile.city,
-		});
-	}, [loading]);
+		if (profile !== null) {
+			setFormData({
+				nickname: loading || !profile.nickname ? '' : profile.nickname,
+				gender: loading || !profile.gender ? '' : profile.gender,
+				status: loading || !profile.status ? '' : profile.status,
+				phoneNumber: loading || !profile.phoneNumber ? '' : profile.phoneNumber,
+				city: loading || !profile.city ? '' : profile.city,
+			});
+		}
+	}, [loading, getCurrentUserProfile, profile]);
 
 	const { phoneNumber, city, status, gender, nickname } = formData;
 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
@@ -25,12 +24,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 		}
 	};
 
-	// redirect when user is logged in -- react router Redirect to
-	if (isAuthenticated) {
-		<Redirect to="/home" />;
-	}
-
-	return (
+	return isAuthenticated ? (
+		<Redirect to="/home" />
+	) : (
 		<div className="container">
 			<h1 className="large text-primary">Sign Up</h1>
 			<p className="lead">

@@ -20,7 +20,7 @@ const Home = ({
 	useEffect(() => {
 		loadUser();
 		getCurrentUserProfile();
-	}, []);
+	}, [getCurrentUserProfile, loadUser]);
 
 	return loading && profile === null ? (
 		<Spinner />
