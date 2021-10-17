@@ -1,19 +1,58 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import setAuthToken from '../utils/setAuthToken';
 
 import {
 	CLEAR_PROFILE,
 	GET_PROFILE,
+	GET_ALL_PROFILES,
 	PROFILE_ERROR,
 	ACCOUNT_DELETED,
 } from './constants';
 
 // get the current user profile
 export const getCurrentUserProfile = () => async (dispatch) => {
+	// dispatch({ type: CLEAR_PROFILE });
 	try {
-		console.log(localStorage);
 		const response = await axios.get('/api/profile/me');
+		dispatch({
+			type: GET_PROFILE,
+			payload: response.data,
+		});
+	} catch (error) {
+		dispatch({
+			type: PROFILE_ERROR,
+			payload: {
+				msg: error.response.statusText,
+				status: error.response.status,
+			},
+		});
+	}
+};
+
+// get all profiles
+export const getAllProfiles = () => async (dispatch) => {
+	dispatch({ type: CLEAR_PROFILE });
+	try {
+		const response = await axios.get('/api/profile');
+		dispatch({
+			type: GET_ALL_PROFILES,
+			payload: response.data,
+		});
+	} catch (error) {
+		dispatch({
+			type: PROFILE_ERROR,
+			payload: {
+				msg: error.response.statusText,
+				status: error.response.status,
+			},
+		});
+	}
+};
+
+// get all profiles
+export const getProfileById = (userId) => async (dispatch) => {
+	try {
+		const response = await axios.get('/api/profile/user/' + userId);
 		dispatch({
 			type: GET_PROFILE,
 			payload: response.data,
@@ -77,7 +116,7 @@ export const deleteAccount = () => async (dispatch) => {
 		window.confirm('Are you sure? You want to permantenly delete your account?')
 	) {
 		try {
-			const response = await axios.delete('/api/profile');
+			await axios.delete('/api/profile');
 
 			dispatch({
 				type: CLEAR_PROFILE,

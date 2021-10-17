@@ -1,14 +1,25 @@
 import React from 'react';
 import { AiFillHome, AiOutlineLogin, AiOutlineLogout } from 'react-icons/ai';
 import { MdOutlineAccountBox } from 'react-icons/md';
+import { BiEditAlt } from 'react-icons/bi';
+import { FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+import Spinner from './Spinner';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+	if (loading) {
+		return <Spinner />;
+	}
 	const vistorLinks = (
 		<ul>
+			<li>
+				<Link to="/users">
+					<FiSearch /> Find a user
+				</Link>
+			</li>
 			<li>
 				<Link to="/home">
 					<AiFillHome /> Home
@@ -30,6 +41,16 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
 	const authLinks = (
 		<ul>
+			<li>
+				<Link to="/users">
+					<FiSearch /> Find a user
+				</Link>
+			</li>
+			<li>
+				<Link to="/posts">
+					<BiEditAlt /> Posts
+				</Link>
+			</li>
 			<li>
 				<Link to="/home">
 					<AiFillHome /> Home

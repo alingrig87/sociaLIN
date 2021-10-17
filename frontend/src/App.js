@@ -9,6 +9,8 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
 import Home from './components/home/Home';
+import Users from './components/users/Users';
+import Posts from './components/posts/Posts';
 import CreateProfile from './components/profile/CreateProfile';
 import EditProfile from './components/profile/EditProfile';
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -25,7 +27,7 @@ const App = () => {
 			setAuthToken(localStorage.token);
 		}
 
-		// store.dispatch(loadUser());
+		store.dispatch(loadUser());
 	}, []);
 
 	return (
@@ -38,6 +40,8 @@ const App = () => {
 					<Switch>
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/login" component={Login} />
+						<Route exact path="/users" component={Users} />
+						<PrivateRoute exact path="/posts" component={Posts} />
 						<PrivateRoute exact path="/home" component={Home} />
 						<PrivateRoute
 							exact
