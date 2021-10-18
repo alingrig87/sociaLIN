@@ -4,35 +4,30 @@ import { IoLocationSharp } from 'react-icons/io5';
 import { AiOutlinePhone } from 'react-icons/ai';
 
 const User = ({
-	profile: {
-		user: { _id, name, avatar },
-		nickname,
-		city,
-		phoneNumber,
-		gender,
-		status,
-	},
+	profile: { user, nickname, city, phoneNumber, gender, status },
 }) => {
 	return (
-		<div className="profile">
-			<div>
-				<img src={avatar} alt="" className="round-img" />
+		user && (
+			<div className="profile">
+				<div>
+					<img src={user.avatar} alt="" className="round-img" />
+				</div>
+				<div>
+					<h2>{user.name}</h2>
+					<p>
+						<AiOutlinePhone /> {phoneNumber}
+					</p>
+					<p className="my-1">
+						{city && (
+							<span>
+								<IoLocationSharp />
+								{user.city}
+							</span>
+						)}
+					</p>
+				</div>
 			</div>
-			<div>
-				<h2>{name}</h2>
-				<p>
-					<AiOutlinePhone /> {phoneNumber}
-				</p>
-				<p className="my-1">
-					{city && (
-						<span>
-							<IoLocationSharp />
-							{city}
-						</span>
-					)}
-				</p>
-			</div>
-		</div>
+		)
 	);
 };
 

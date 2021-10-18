@@ -3,6 +3,7 @@ import { setAlert } from './alert';
 import {
 	ADD_POST,
 	GET_POSTS,
+	UPDATE_POST,
 	POST_ERROR,
 	DELETE_POST,
 	UPDATE_LIKES,
@@ -38,12 +39,32 @@ export const getPosts = () => async (dispatch) => {
 	try {
 		const response = await axios.get('/api/posts');
 		dispatch({
-			type: USER_LOADED,
+			type: GET_POSTS,
 			payload: response.data,
 		});
-
+	} catch (error) {
 		dispatch({
-			type: GET_POSTS,
+			type: POST_ERROR,
+			payload: {
+				msg: error.response.statusText,
+				status: error.response.status,
+			},
+		});
+	}
+};
+
+// update post
+export const updatePost = (postId, formData) => async (dispatch) => {
+	try {
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
+		console.log(formData, postId, config);
+		const response = await axios.put(`/api/posts/${postId}`, formData, config);
+		dispatch({
+			type: UPDATE_POST,
 			payload: response.data,
 		});
 	} catch (error) {
@@ -96,7 +117,7 @@ export const addLike = (postId) => async (dispatch) => {
 	}
 };
 
-// add like
+// un like
 export const unLike = (postId) => async (dispatch) => {
 	try {
 		const response = await axios.put(`/api/posts/unlike/${postId}`);

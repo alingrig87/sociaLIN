@@ -16,19 +16,21 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 	const vistorLinks = (
 		<ul>
 			<li>
-				<Link to="/users">
-					<FiSearch /> Find new friends
+				<Link to="/posts">
+					<BiEditAlt />
+					<span className="hide-sm">Posts</span>
 				</Link>
 			</li>
 			<li>
 				<Link to="/login">
-					<AiOutlineLogin /> Log in
+					<AiOutlineLogin />
+					<span className="hide-sm">Log in</span>
 				</Link>
 			</li>
 			<li>
 				<Link to="/register">
 					<MdOutlineAccountBox />
-					Sign up
+					<span className="hide-sm">Sign up</span>
 				</Link>
 			</li>
 		</ul>
@@ -38,23 +40,24 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 		<ul>
 			<li>
 				<Link to="/users">
-					<FiSearch /> Find new friends
+					<FiSearch /> <span className="hide-sm"> Find new friends</span>
 				</Link>
 			</li>
 			<li>
 				<Link to="/posts">
-					<BiEditAlt /> Posts
+					<BiEditAlt /> <span className="hide-sm">Posts</span>
 				</Link>
 			</li>
 			<li>
 				<Link to="/account">
-					<MdOutlineAccountCircle /> My account
+					<MdOutlineAccountCircle /> <span className="hide-sm">My account</span>
 				</Link>
 			</li>
 			<li></li>
 			<li>
 				<Link to="/" onClick={() => logout()}>
-					<AiOutlineLogout /> Log out
+					<AiOutlineLogout />
+					<span className="hide-sm">Log out</span>
 				</Link>
 			</li>
 		</ul>
@@ -64,12 +67,14 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 		<div>
 			<nav className="navbar bg-primary">
 				<h1 className="logo">
-					<Link to="/">SociaL in</Link>
+					<Link to="/">
+						S<span className="hide-sm">ociaL in</span>
+					</Link>
 				</h1>
 				{isAuthenticated ? (
 					<div className="loggedin-user">
 						<img className="round-img img-small" src={user && user.avatar} />
-						<p>{user && user.name}</p>
+						<p className="hide-sm">{user && user.name}</p>
 					</div>
 				) : (
 					''

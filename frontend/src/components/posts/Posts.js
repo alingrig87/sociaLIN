@@ -7,11 +7,10 @@ import { getPosts } from '../../actions/post';
 import { loadUser } from '../../actions/auth';
 import PostInput from './PostInput';
 
-const Posts = ({ loadUser, getPosts, post: { posts, loading } }) => {
+const Posts = ({ auth, loadUser, getPosts, post: { posts, loading } }) => {
 	useEffect(() => {
-		loadUser();
+		if (auth.isAuthenticated) loadUser();
 		getPosts();
-		loadUser();
 	}, [getPosts, loadUser]);
 	return loading ? (
 		<Spinner />
@@ -35,6 +34,7 @@ Posts.propTypes = {
 
 const mapStateToProps = (state) => ({
 	post: state.post,
+	auth: state.auth,
 });
 
 export default connect(mapStateToProps, { loadUser, getPosts })(Posts);
