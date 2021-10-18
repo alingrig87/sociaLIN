@@ -1,16 +1,33 @@
-# sociaLIN
+## sociaLIN 😊
 
 Social media project using React and Node JS
 
-### Install dependencies
+## Initial config ✍️
 
+### Add a default.json file in config folder with the following
+
+```json
+{
+	"mongoURI": "<your_mongoDB_Atlas_uri_with_credentials>",
+	"jwtSecret": "secret"
+}
+```
+
+### Install server dependencies 🧑‍🔧
+
+```bash
 npm install
+```
 
-### Start the app in development mode
+### Install client dependencies 🧑‍🔧
 
+```bash
+cd client
+npm install
+```
+
+### Run both Express & React from root 💻
+
+```bash
 npm run dev
-
-### Start the app in development mode
-Access the app locally:
-http://localhost:3000/
-
+```
