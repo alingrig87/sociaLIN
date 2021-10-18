@@ -25,7 +25,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 	};
 
 	return isAuthenticated ? (
-		<Redirect to="/home" />
+		<Redirect to="/posts" />
 	) : (
 		<div className="container">
 			<h1 className="large text-primary">Sign Up</h1>
