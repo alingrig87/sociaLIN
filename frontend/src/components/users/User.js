@@ -21,7 +21,7 @@ const User = ({
 						{city && (
 							<span>
 								<IoLocationSharp />
-								{user.city}
+								{city}
 							</span>
 						)}
 					</p>
