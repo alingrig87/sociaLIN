@@ -4,10 +4,11 @@
 	"description": "Social Media app build with node.js and React",
 	"main": "server.js",
 	"scripts": {
+		"server": "nodemon server",
+		"client": "npm start --prefix client",
+		"dev": "concurrently \"npm run server\" \"npm run client\" ",
 		"start": "node server",
-		"backend": "nodemon server",
-		"frontend": "npm start --prefix frontend",
-		"dev": "concurrently \"npm run backend\" \"npm run frontend\" "
+		"heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
 	},
 	"repository": {
 		"type": "git",

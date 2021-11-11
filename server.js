@@ -16,6 +16,13 @@ app.use('/api/auth', require('./api/auth'));
 app.use('/api/profile', require('./api/profile'));
 app.use('/api/posts', require('./api/posts'));
 
-const PORT = process.env.PORT || 5500;
+// heroku special env
+console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV === 'production') {
+	// npm run build for react app
+	app.use(express.static('client/build'));
+}
+
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

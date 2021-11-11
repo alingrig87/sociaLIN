@@ -1,4 +1,4 @@
 {
-	"mongoURI": "mongodb+srv://alingrig87:alingrig87@cluster0.f4v5k.mongodb.net/users_db?retryWrites=true&w=majority",
-	"jwtSecret": "secrettoken123"
+	"mongoURI": "mongodb+srv://frontend17:frontend17@cluster0.f4v5k.mongodb.net/users_db?retryWrites=true&w=majority",
+	"jwtSecret": "secretToken123"
 }
