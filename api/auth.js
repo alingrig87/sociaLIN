@@ -63,15 +63,12 @@ router.post(
 				},
 			};
 
-			jwt.sign(
-				payload,
-				config.get('jwtSecret'),
-				{ expiresIn: 360000 },
-				(err, token) => {
-					if (err) throw err;
-					response.json({ token });
-				}
-			);
+			const jwtSecret = config.get('jwtSecret') || process.env.jwtSecret;
+
+			jwt.sign(payload, jwtSecret, { expiresIn: 360000 }, (err, token) => {
+				if (err) throw err;
+				response.json({ token });
+			});
 
 			// response.send('User registered');
 		} catch (error) {
