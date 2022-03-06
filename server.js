@@ -21,6 +21,7 @@ console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'production') {
 	// npm run build for react app
 	app.use(express.static('client/build'));
+	app.get('*', (req, res) => { req.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 }
 
 const PORT = process.env.PORT || 5000;
