@@ -8,7 +8,7 @@ connectToDB();
 // Init Middleware
 app.use(express.json({ extended: false }));
 
-app.get('/', (request, response) => response.send('Test API ...'));
+// app.get('/', (request, response) => response.send('Test API ...'));
 
 // Routes
 app.use('/api/users', require('./api/users'));
@@ -21,6 +21,7 @@ console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'production') {
 	// npm run build for react app
 	app.use(express.static('client/build'));
+
 	app.get('*', (req, res) => {
 		req.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 	});
